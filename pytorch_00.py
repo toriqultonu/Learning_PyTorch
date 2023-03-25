@@ -25,5 +25,7 @@ some_tensor = torch.rand(3, 4)
 
 print(f"Datatype of the tensor: {some_tensor.dtype}")
 print(f"Shape of tensor: {some_tensor.shape}")
-print(f"Size of tensor: {some_tensor.size()}")
+print(f"Size of tensor: {some_tensor.size()}") 
 print(f"Device of tensor: {some_tensor.device}")
+
+

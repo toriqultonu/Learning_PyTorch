@@ -1,0 +1,4 @@
+Tensor datatypes is one of the 3 big error that we can run into learning pytorch and deeplearning:
+    -> Tensors not right datatypes
+    -> Tensors not right shape
+    -> Tensors not on the right device

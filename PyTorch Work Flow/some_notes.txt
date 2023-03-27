@@ -1,0 +1,8 @@
+
+One of the work flow of pytorch we are learnig:
+    -> data (prepare and load)
+    -> build model
+    -> fitting the model to data (training)
+    -> making prediction and evaluting a model (inference)
+    -> saving and loading a model
+    -> putting all together

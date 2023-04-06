@@ -48,6 +48,3 @@ def plot_predictions(
     # showing the plt
     plt.legend(prop={"size": 14})
     plt.show()
-
-
-plot_predictions()

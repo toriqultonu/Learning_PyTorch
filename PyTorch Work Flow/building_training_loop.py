@@ -14,7 +14,7 @@ import regression_formula
 
 
 ## an epoch is one loop through the data (it's a hyper parameter)
-epochs = 1
+epochs = 100
 
 ## Training
 # Loop through the data

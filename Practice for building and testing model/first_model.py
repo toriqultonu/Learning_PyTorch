@@ -82,4 +82,21 @@ model_1 = LinearRegressionModelV2()
 model_1.to(device=device)
 # print(next(model_1.parameters()).device)
 
-## Training 
+## Training
+
+# Set up the loss function
+loss_fn = nn.L1Loss()  # same as MAE
+
+# Set up the optimizer
+optimizer = torch.optim.SGD(params=model_1.parameters(), lr=0.01)
+
+# Writing a training loop
+torch.manual_seed(42)
+
+epochs = 200
+
+for epoch in range(epochs):
+    model_1.train()
+
+    # Forward pass
+    y_pred = 

@@ -95,6 +95,12 @@ torch.manual_seed(42)
 
 epochs = 200
 
+# put data on the target device (device agnostic code for data)
+X_train = X_train.to(device=device)
+y_train = y_train.to(device=device)
+X_test = X_test.to(device=device)
+y_test = y_test.to(device=device)
+
 for epoch in range(epochs):
     model_1.train()
 
@@ -113,15 +119,18 @@ for epoch in range(epochs):
     # Optimizer step
     optimizer.step()
 
-## Testing
+    ## Testing
 
-model_1.eval()
+    model_1.eval()
 
-with torch.inference_mode():
-    test_pred = model_1(X_test)
+    with torch.inference_mode():
+        test_pred = model_1(X_test)
 
-    test_loss = loss_fn(test_pred, y_test)
+        test_loss = loss_fn(test_pred, y_test)
 
-# Printing everything
-if epoch % 10 == 0:
-    print(f"Epoch: {epoch} | Loss: {loss} | Test Loss: {test_loss} ")
+    # Printing everything
+    if epoch % 10 == 0:
+        print(f"Epoch: {epoch} | Loss: {loss} | Test Loss: {test_loss} ")
+
+print(model_1.state_dict())
+print(weight, bias)

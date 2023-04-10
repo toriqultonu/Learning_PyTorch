@@ -20,7 +20,7 @@ for building_training_loop.epoch in range(building_training_loop.epochs):
 
     print(
         f"Epoch: {building_training_loop.epoch} Loss: {building_training_loop.loss} Test Loss: {test_loss}"
-    )
+    ) 
 
 print(build_model.model_0.state_dict())
 print(building_training_loop.epoch_count)

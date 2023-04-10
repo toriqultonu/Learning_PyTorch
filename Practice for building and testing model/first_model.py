@@ -99,4 +99,19 @@ for epoch in range(epochs):
     model_1.train()
 
     # Forward pass
-    y_pred = 
+    y_pred = model_1(X_train)
+
+    # Calculate the loss
+    loss = loss_fn(y_pred, y_train)
+
+    # Optimizer zero grad
+    optimizer.zero_grad()
+
+    # Perform backpropagation
+    loss.backward()
+
+    # Optimizer step
+    optimizer.step()
+
+## Testing
+

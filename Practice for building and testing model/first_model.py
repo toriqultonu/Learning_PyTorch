@@ -70,7 +70,16 @@ class LinearRegressionModelV2(nn.Module):
 # Set the manual seed
 torch.manual_seed(42)
 model_1 = LinearRegressionModelV2()
-print(model_1, model_1.state_dict())
+# print(model_1, model_1.state_dict())
 
 # Using plot prediction
 # plot_predictions(X_train, y_train, X_test, y_test)
+
+# Check the model current device
+# print(next(model_1.parameters()).device)
+
+# Set the model to use the target device
+model_1.to(device=device)
+# print(next(model_1.parameters()).device)
+
+## Training 

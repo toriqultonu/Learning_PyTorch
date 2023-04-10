@@ -115,3 +115,13 @@ for epoch in range(epochs):
 
 ## Testing
 
+model_1.eval()
+
+with torch.inference_mode():
+    test_pred = model_1(X_test)
+
+    test_loss = loss_fn(test_pred, y_test)
+
+# Printing everything
+if epoch % 10 == 0:
+    print(f"Epoch: {epoch} | Loss: {loss} | Test Loss: {test_loss} ")

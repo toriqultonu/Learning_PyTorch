@@ -18,3 +18,10 @@ loaded_model_1.to(device=first_model.device)
 
 print(loaded_model_1)
 print(loaded_model_1.state_dict())
+
+# Evaluate loaded model
+loaded_model_1.eval()
+with torch.inference_mode():
+    loaded_model_1_pred = loaded_model_1(first_model.X_train)
+
+print(first_model.y_pred == loaded_model_1_pred)

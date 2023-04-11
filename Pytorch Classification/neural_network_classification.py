@@ -22,4 +22,6 @@ circles = pd.DataFrame({"X1": X[:, 0], "X2": X[:, 1], "label": y})
 
 print(circles.head(100))
 
-
+# Visualizing data
+plt.scatter(x=X[:, 0], y=X[:, 1], c=y, cmap=plt.cm.RdYlBu)
+plt.show()

@@ -16,4 +16,10 @@ X, y = make_circles(n_samples=n_samples, noise=0.03, random_state=42)
 print(len(X), len(y))
 print(f"First 5 sample of X: {X[:5]}")
 print(f"First 5 sample of y: {y[:5]}")
-print(y)
+
+# Make dataframe of circle data using pandas
+circles = pd.DataFrame({"X1": X[:, 0], "X2": X[:, 1], "label": y})
+
+print(circles.head(100))
+
+

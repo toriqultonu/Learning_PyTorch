@@ -4,6 +4,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import sklearn
 from sklearn.datasets import make_circles
+from sklearn.model_selection import train_test_split
 
 ## Make classification data and get it ready
 
@@ -33,3 +34,10 @@ X = torch.from_numpy(X).type(torch.float)
 y = torch.from_numpy(y).type(torch.float)
 
 print(X[:5], y[:5])
+
+# split data into training and test sets
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.2, random_state=42
+)
+
+print(len(X_train), len(X_test), len(y_train), len(y_test))

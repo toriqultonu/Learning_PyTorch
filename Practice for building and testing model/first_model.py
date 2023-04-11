@@ -1,6 +1,8 @@
+from itertools import _Predicate
 import torch
 from torch import nn
 import matplotlib.pyplot as plt
+from PyTorch_Work_Flow import regression_formula
 
 ## check pytorch version
 # print(torch.__version__)
@@ -50,6 +52,13 @@ def plot_predictions(
 
     # plot testing data in green
     plt.scatter(test_data, test_label, c="g", s=4, label="Testing Data")
+
+    if predictions is not None:
+        plt.scatter(test_data, predictions, c="r", s=4, label="Predictions")
+
+    # showing the plt
+    plt.legend(prop={"size": 14})
+    plt.show()
 
 
 ## Building a pytorch linear model

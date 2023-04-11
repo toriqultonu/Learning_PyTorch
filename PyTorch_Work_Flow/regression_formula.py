@@ -2,6 +2,7 @@ import torch
 from torch import nn
 import matplotlib.pyplot as plt
 
+
 ## create known parameters
 weight = 0.7
 bias = 0.3

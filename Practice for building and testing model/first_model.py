@@ -1,8 +1,6 @@
-from itertools import _Predicate
 import torch
 from torch import nn
 import matplotlib.pyplot as plt
-from PyTorch_Work_Flow import regression_formula
 
 ## check pytorch version
 # print(torch.__version__)

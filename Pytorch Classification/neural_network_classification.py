@@ -23,5 +23,13 @@ circles = pd.DataFrame({"X1": X[:, 0], "X2": X[:, 1], "label": y})
 print(circles.head(100))
 
 # Visualizing data
-plt.scatter(x=X[:, 0], y=X[:, 1], c=y, cmap=plt.cm.RdYlBu)
-plt.show()
+# plt.scatter(x=X[:, 0], y=X[:, 1], c=y, cmap=plt.cm.RdYlBu)
+# plt.show()
+
+## Turn data into tensor and create train and test splits
+
+# Turn data in tensor
+X = torch.from_numpy(X).type(torch.float)
+y = torch.from_numpy(y).type(torch.float)
+
+print(X[:5], y[:5])

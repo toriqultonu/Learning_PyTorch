@@ -1,4 +1,5 @@
 import torch
+from torch import nn
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -41,3 +42,17 @@ X_train, X_test, y_train, y_test = train_test_split(
 )
 
 print(len(X_train), len(X_test), len(y_train), len(y_test))
+
+## Building model
+# Make device agnostic code
+device = "cuda" if torch.cuda.is_available() else "cpu"
+
+# Constructing  a model that subclasses nn.Module
+class CircleModelV0(nn.Module):
+    def __init__(self):
+        super().__init__()
+        self.layer_1 = nn.Linear(in_features=2, out_features=5)
+        self.layer_2 = nn.Linear(in_features=5, out_features=1)
+    
+    def forward(self, x):
+        return self.layer_2(self.layer_1(x))

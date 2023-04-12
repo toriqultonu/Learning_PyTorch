@@ -77,3 +77,9 @@ print(f"Length of predictions: {len(untrained_preds)}, Shape: {untrained_preds.s
 print(f"Length of test samples: {len(X_test)}, Shape: {X_test.shape}")
 print(f"\nFirst 10 predictions: {untrained_preds[:10]}")
 print(f"\nFirst 10 labels: {y_test[:10]}")
+
+# setup loss function and optimizer
+
+loss_fn = nn.BCEWithLogitsLoss()
+optimizer = torch.optim.SGD(params= model_0.parameters(), lr=0.1)
+

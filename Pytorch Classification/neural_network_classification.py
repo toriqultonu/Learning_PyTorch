@@ -73,10 +73,10 @@ model_1 = nn.Sequential(
 # Make predictions
 with torch.inference_mode():
     untrained_preds = model_0(X_test.to(device))
-print(f"Length of predictions: {len(untrained_preds)}, Shape: {untrained_preds.shape}")
-print(f"Length of test samples: {len(X_test)}, Shape: {X_test.shape}")
-print(f"\nFirst 10 predictions: {untrained_preds[:10]}")
-print(f"\nFirst 10 labels: {y_test[:10]}")
+# print(f"Length of predictions: {len(untrained_preds)}, Shape: {untrained_preds.shape}")
+# print(f"Length of test samples: {len(X_test)}, Shape: {X_test.shape}")
+# print(f"\nFirst 10 predictions: {untrained_preds[:10]}")
+# print(f"\nFirst 10 labels: {y_test[:10]}")
 
 # setup loss function and optimizer
 
@@ -89,3 +89,16 @@ def accuracy_fn(y_true, y_pred):
     correct = torch.eq(y_true, y_pred).sum().item()
     acc = (correct / len(y_pred)) * 100
     return acc
+
+
+## Train
+# view the first 5 outputs of the forward pass on the test data
+with torch.inference_mode():
+    y_logits = model_0(X_test.to(device))[:5]
+print(y_logits)  # the output of y_logits are the called the logits..
+
+# Target : going from raw logits -> prediction probabilities -> prediction labels
+
+# using the sigmoid activation function on our model logits to turn them into prediction probabilities
+y_pred_probs = torch.sigmoid(y_logits)
+print(y_pred_probs)

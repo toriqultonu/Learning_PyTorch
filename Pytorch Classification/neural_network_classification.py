@@ -81,5 +81,11 @@ print(f"\nFirst 10 labels: {y_test[:10]}")
 # setup loss function and optimizer
 
 loss_fn = nn.BCEWithLogitsLoss()
-optimizer = torch.optim.SGD(params= model_0.parameters(), lr=0.1)
+optimizer = torch.optim.SGD(params=model_0.parameters(), lr=0.1)
 
+
+# Calculate accuracy
+def accuracy_fn(y_true, y_pred):
+    correct = torch.eq(y_true, y_pred).sum().item()
+    acc = (correct / len(y_pred)) * 100
+    return acc

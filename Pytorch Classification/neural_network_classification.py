@@ -6,6 +6,8 @@ import matplotlib.pyplot as plt
 import sklearn
 from sklearn.datasets import make_circles
 from sklearn.model_selection import train_test_split
+import requests
+from pathlib import Path
 
 ## Make classification data and get it ready
 
@@ -159,3 +161,15 @@ for epoch in range(epochs):
         print(
             f"Epoch: {epoch} | Loss: {loss:.5f}, Acc: {acc:.2f} | Test Loss: {test_loss:.5f}, Test Acc: {test_acc:.2f}"
         )
+
+## Download helper function from Learn Pytorch repo if it's not already downloaded...
+if Path("helper_functions.py").is_file():
+    print("helper_functions.py already exists, skipping download")
+else:
+    print("Download helper functions.py")
+    request = requests.get(
+        "https://raw.githubusercontent.com/mrdbourke/pytorch-deep-learning/main/helper_functions.py"
+    )
+
+    with open("helper_functions.py", "wb") as f:
+        f.write(request.content)

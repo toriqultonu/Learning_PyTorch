@@ -102,3 +102,60 @@ print(y_logits)  # the output of y_logits are the called the logits..
 # using the sigmoid activation function on our model logits to turn them into prediction probabilities
 y_pred_probs = torch.sigmoid(y_logits)
 print(y_pred_probs)
+y_preds = torch.round(y_pred_probs)
+y_preds.squeeze()
+print(y_preds)
+
+# Training Loop
+torch.manual_seed(42)
+torch.cuda.manual_seed(42)
+
+# set number of epoch
+epochs = 100
+
+# put data to target device
+X_train, y_train = X_train.to(device), y_train.to(device)
+X_test, y_test = X_test.to(device), y_test.to(device)
+
+# buiding training and evaluation loop
+for epoch in range(epochs):
+    ## Training
+    model_0.train()
+
+    # Forward pass
+    y_logits = model_0(X_train).squeeze()
+    y_preds = torch.round(
+        torch.sigmoid(y_logits)
+    )  # turns logits -> pred probs -> pred labels
+
+    # Calculate loss/ accuracy
+    loss = loss_fn(
+        y_logits, y_train
+    )  # here y_logits is used rather than y_pred because BCEwithLogitLoss is use as a loss function
+    acc = accuracy_fn(y_true=y_train, y_pred=y_preds)
+
+    # Optimizer zero grad
+    optimizer.zero_grad()
+
+    # Loss Backward / Backpropagation
+    loss.backward()
+
+    # Optimizer step
+    optimizer.step()
+
+    ## Testing
+    model_0.eval()
+    with torch.inference_mode():
+        # Forward pass
+        test_logits = model_0(X_test).squeeze()
+        test_preds = torch.round(torch.sigmoid(test_logits))
+
+        # Calculate Test Loss/Accuracy
+        test_loss = loss_fn(test_logits, y_test)
+        test_acc = accuracy_fn(y_true=y_test, y_pred=test_preds)
+
+    # printing result
+    if epoch % 10 == 0:
+        print(
+            f"Epoch: {epoch} | Loss: {loss:.5f}, Acc: {acc:.2f} | Test Loss: {test_loss:.5f}, Test Acc: {test_acc:.2f}"
+        )

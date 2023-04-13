@@ -70,6 +70,8 @@ def plot_decision_boundary(model: torch.nn.Module, X: torch.Tensor, y: torch.Ten
     plt.xlim(xx.min(), xx.max())
     plt.ylim(yy.min(), yy.max())
 
+    plt.show()
+
 
 # Plot linear data or training and test and predictions (optional)
 def plot_predictions(

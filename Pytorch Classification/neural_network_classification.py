@@ -60,9 +60,23 @@ class CircleModelV0(nn.Module):
     def forward(self, x):
         return self.layer_2(self.layer_1(x))
 
+# Impoved version of the model
+class CircleModelV1(nn.Module):
+    def __init__(self):
+        super().__init__()
+        self.layer_1 = nn.Linear(in_features=2, out_features=10)
+        self.layer_2 = nn.Linear(in_features=10, out_features=10)
+        self.layer_3 = nn.Linear(in_features=10, out_features=1)
+
+    def forward(self, x):
+        # z = self.layer_1(x)
+        # z = self.layer_2(z)
+        # z = self.layer_3(z)
+        return self.layer_3(self.layer_2(self.layer_1(x)))
 
 # Instantiating and device agnostic
-model_0 = CircleModelV0().to(device=device)
+# model_0 = CircleModelV0().to(device=device)
+model_0 = CircleModelV1().to(device=device)
 
 # print(model_0)
 # print(next(model_0.parameters()).device)
@@ -113,7 +127,7 @@ torch.manual_seed(42)
 torch.cuda.manual_seed(42)
 
 # set number of epoch
-epochs = 100
+epochs = 1000
 
 # put data to target device
 X_train, y_train = X_train.to(device), y_train.to(device)
@@ -157,7 +171,7 @@ for epoch in range(epochs):
         test_acc = accuracy_fn(y_true=y_test, y_pred=test_preds)
 
     # printing result
-    if epoch % 10 == 0:
+    if epoch % 100 == 0:
         print(
             f"Epoch: {epoch} | Loss: {loss:.5f}, Acc: {acc:.2f} | Test Loss: {test_loss:.5f}, Test Acc: {test_acc:.2f}"
         )

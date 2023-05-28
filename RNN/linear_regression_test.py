@@ -16,7 +16,7 @@ X_train, X_test, y_train, y_test = train_test_split(
 print(X_train.shape)
 print(y_train.shape)
 
-regressor = LinearRegression()
+regressor = LinearRegression(learning_rate=0.001)
 regressor.fit(X_train, y_train)
 predicted = regressor.predict(X_test)
 
@@ -27,3 +27,11 @@ def mse(y_true, y_predicted):
 
 mse_value = mse(y_test, predicted)
 print(mse_value)
+
+y_pred_line = regressor.predict(X)
+cmap = plt.get_cmap("viridis")
+fig = plt.figure(figsize=(8, 6))
+m1 = plt.scatter(X_train, y_train, color=cmap(0.9), s=10)
+m2 = plt.scatter(X_test, y_test, color=cmap(0.5), s=10)
+plt.plot(X, y_pred_line, color="black", linewidth=2, label="Prediction")
+plt.show()

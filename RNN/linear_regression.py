@@ -2,7 +2,7 @@ import numpy as np
 
 
 class LinearRegression:
-    def __init__(self, learning_rate=0.0001, n_iters=1000):
+    def __init__(self, learning_rate=0.01, n_iters=1000):
         self.lr = learning_rate
         self.n_iters = n_iters
         self.weights = None

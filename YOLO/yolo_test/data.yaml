@@ -1,0 +1,13 @@
+train: /home/dexton/Github/Learning_PyTorch/YOLO/yolo_test/train/images
+val: /home/dexton/Github/Learning_PyTorch/YOLO/yolo_test/valid/images
+test: /home/dexton/Github/Learning_PyTorch/YOLO/yolo_test/test/images
+
+nc: 2
+names: ['female-dress', 'male-dress']
+
+roboflow:
+  workspace: rajshahi-university-of-engineering-and-technology-votsg
+  project: male-female-blntx
+  version: 1
+  license: CC BY 4.0
+  url: https://universe.roboflow.com/rajshahi-university-of-engineering-and-technology-votsg/male-female-blntx/dataset/1

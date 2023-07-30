@@ -1,8 +1,8 @@
 task: detect
 mode: train
-model: yolov8n.pt
-data: data.yaml
-epochs: 3
+model: yolov8n.yaml
+data: /home/dexton/Github/Learning_PyTorch/YOLO/yolo_test/data.yaml
+epochs: 1
 patience: 50
 batch: 16
 imgsz: 640
